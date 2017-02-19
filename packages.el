@@ -39,6 +39,11 @@
 (defun dart/init-dart-mode ()
   (use-package dart-mode
     :defer t
+    :init
+    (progn
+      (add-hook 'dart-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+      (add-hook 'dart-mode-hook nlinum-mode)
+      )
     :config
     (progn
         (spacemacs/set-leader-keys
