@@ -12,11 +12,15 @@
 (setq dart-packages
   '(
     flycheck
-    (dart-mode :fetcher github
-                :repo "averrin/dart-mode")
+    (dart-mode ;;:location (recipe
+      :fetcher github
+      :repo "averrin/dart-mode")
+    ;;)
     company
-    (company-dart :fetcher github
-                  :repo "sid-kurias/company-dart")
+    (company-dart  ;;:location (recipe
+      :fetcher github
+      :repo "sid-kurias/company-dart")
+    ;;)
   )
 )
 
@@ -35,18 +39,16 @@
 (defun dart/init-dart-mode ()
   (use-package dart-mode
     :defer t
-    :init
+    :config
     (progn
-      (defun spacemacs//dart-set-keys ()
-        "Set the tab width."
-        (spacemacs/set-leader-keys-for-major-mode 'dart-mode
-          "j" 'dart-jump-to-defn
-          "q" 'dart-quick-fix
-          "d" 'dart-jump-to-defn
-          "f" 'dartfmt
-          "i" 'dart-imports
+        (spacemacs/set-leader-keys
+        ;; (spacemacs/set-leader-keys-for-major-mode 'dart-mode
+          "mj" 'dart-jump-to-defn
+          "mq" 'dart-quick-fix
+          "md" 'dart-jump-to-defn
+          "mf" 'dartfmt
+          "mi" 'dart-imports
+          "ms" 'dart-sort-members
           )
-        )
-      (add-hook 'dart-mode-hook 'spacemacs//dart-set-keys)
     )
 ))

@@ -1,6 +1,0 @@
-[submodule "local/company-dart"]
-	path = local/company-dart
-	url = https://github.com/sid-kurias/company-dart.git
-[submodule "local/dart-mode"]
-	path = local/dart-mode
-	url = git@github.com:averrin/dart-mode.git
