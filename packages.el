@@ -12,22 +12,23 @@
 (setq dart-packages
   '(
     flycheck
-    (dart-mode ;;:location (recipe
+    (dart-mode :location (recipe
       :fetcher github
       :repo "averrin/dart-mode")
-    ;;)
-    company
-    (company-dart  ;;:location (recipe
+    )
+    (company-dart
+     :toggle (configuration-layer/package-usedp 'company)
+     :location (recipe
       :fetcher github
-      :repo "sid-kurias/company-dart")
-    ;;)
+      :repo "averrin/company-dart"
+      )
+    )
   )
 )
 
 
 (defun dart/post-init-flycheck ()
   (spacemacs/add-flycheck-hook 'dart-mode))
-
 
 (defun dart/init-company-dart ()
   (use-package company-dart
@@ -42,7 +43,6 @@
     :init
     (progn
       (add-hook 'dart-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-      (add-hook 'dart-mode-hook nlinum-mode)
       )
     :config
     (progn
